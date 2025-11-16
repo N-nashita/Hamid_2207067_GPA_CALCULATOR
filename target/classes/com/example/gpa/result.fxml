@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gpa.controller.ResultController">
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="16">
+            <padding><Insets topRightBottomLeft="16"/></padding>
+
+            <Label fx:id="lblGpaCombined" text="Your GPA is 0.000" style="-fx-font-size: 30px; -fx-font-weight: bold;" />
+                <Label fx:id="lblTotalCredits" text="Total Credits: 0.0" style="-fx-font-size: 16px;" />
+
+            <TableView fx:id="table" prefHeight="400">
+                <columns>
+                    <TableColumn fx:id="colName" text="Course Name" prefWidth="200" />
+                    <TableColumn fx:id="colCode" text="Code" prefWidth="120" />
+                    <TableColumn fx:id="colCredit" text="Credit" prefWidth="80" />
+                    <TableColumn fx:id="colTeacher1" text="Teacher 1" prefWidth="160" />
+                    <TableColumn fx:id="colTeacher2" text="Teacher 2" prefWidth="160" />
+                    <TableColumn fx:id="colGrade" text="Grade" prefWidth="80" />
+                </columns>
+            </TableView>
+
+            <HBox alignment="CENTER">
+                <Button text="Back to Home" onAction="#onBack" prefWidth="180" prefHeight="40" />
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
