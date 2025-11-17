@@ -2,7 +2,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gpa.controller.CourseController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gpa.controller.CourseController" stylesheets="@styles.css" styleClass="app-background">
     <top>
         <HBox spacing="10">
             <padding><Insets topRightBottomLeft="10"/></padding>

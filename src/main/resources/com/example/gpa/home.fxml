@@ -2,10 +2,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gpa.controller.HomeController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gpa.controller.HomeController" stylesheets="@styles.css" styleClass="app-background">
     <center>
         <VBox alignment="CENTER" spacing="16">
-            <Label text="Hey, wanna calculate your gpa?" style="-fx-font-size: 28px; -fx-font-weight: bold;" />
+            <Label text="Hey, wanna calculate your gpa?" styleClass="text-heading" style="-fx-font-size: 28px; -fx-font-weight: bold;" />
             <Button text="Start GPA Calculator" onAction="#onStart" prefWidth="240" prefHeight="48" />
         </VBox>
     </center>

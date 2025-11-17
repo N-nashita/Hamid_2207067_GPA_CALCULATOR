@@ -2,12 +2,12 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gpa.controller.ResultController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gpa.controller.ResultController" stylesheets="@styles.css" styleClass="app-background">
     <center>
         <VBox alignment="TOP_CENTER" spacing="16">
             <padding><Insets topRightBottomLeft="16"/></padding>
 
-            <Label fx:id="lblGpaCombined" text="Your GPA is 0.000" style="-fx-font-size: 30px; -fx-font-weight: bold;" />
+            <Label fx:id="lblGpaCombined" text="Your GPA is 0.000" styleClass="text-heading" style="-fx-font-size: 30px; -fx-font-weight: bold;" />
                 <Label fx:id="lblTotalCredits" text="Total Credits: 0.0" style="-fx-font-size: 16px;" />
 
             <TableView fx:id="table" prefHeight="400">

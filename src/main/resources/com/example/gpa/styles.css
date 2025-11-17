@@ -1,1 +1,36 @@
+.button {
+  -fx-background-radius: 8;
+  -fx-background-insets: 0, 2;
+  -fx-padding: 8 16;
+  -fx-font-weight: bold;
+  -fx-cursor: hand;
 
+  /* Lightened gradient border */
+  -fx-background-color: linear-gradient(to right, #8f5af0, #5aa7ff), #ffffff;
+  -fx-text-fill: #5aa7ff;
+}
+
+.button:hover {
+  -fx-background-color: linear-gradient(to right, #8f5af0, #5aa7ff),
+    linear-gradient(to right, #8f5af0, #5aa7ff);
+  -fx-text-fill: white;
+}
+
+.button:pressed {
+  -fx-background-insets: 0, 3;
+  -fx-opacity: 0.95;
+}
+
+.button:focused {
+  -fx-effect: dropshadow(gaussian, rgba(37, 117, 252, 0.35), 8, 0.2, 0, 0);
+}
+
+.text-heading {
+  -fx-text-fill: linear-gradient(to right, #8f5af0, #5aa7ff);
+  -fx-font-weight: bold;
+}
+
+.app-background {
+  -fx-background-color: linear-gradient(to bottom right, #f6f8ff, #cdd7f1);
+  -fx-background-insets: 0;
+}
