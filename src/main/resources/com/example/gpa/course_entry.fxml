@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gpa.controller.CourseController" stylesheets="@styles.css" styleClass="app-background">
     <top>
-        <HBox spacing="10">
+        <HBox spacing="10" styleClass="page-header">
             <padding><Insets topRightBottomLeft="10"/></padding>
-            <Label text="GPA Calculator — Course Entry" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+            <Label text="GPA Calculator- Course Entry" styleClass="text-heading" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
         </HBox>
     </top>
     <center>
