@@ -42,8 +42,10 @@
                 </GridPane>
 
                 <HBox spacing="10" alignment="CENTER">
-                        <VBox.margin><Insets top="10"/></VBox.margin>
+                    <VBox.margin><Insets top="10"/></VBox.margin>
+                    <Button text="Reset" fx:id="btnReset" onAction="#onReset" prefWidth="120" prefHeight="40" />
                     <Button text="Add Course" fx:id="btnAddCourse" onAction="#onAddCourse" prefWidth="180" prefHeight="40" />
+                    <Button text="Go Back" onAction="#onBack" prefWidth="140" prefHeight="40" />
                 </HBox>
 
                 <Label fx:id="lblProgress" text="Credits entered: 0 / 0" />

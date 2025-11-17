@@ -121,4 +121,20 @@ public class CourseController {
         Alert a = new Alert(t, msg, ButtonType.OK);
         a.showAndWait();
     }
+
+    @FXML
+    private void onReset(ActionEvent e) {
+        courses.clear();
+        clearEntryFields();
+        totalRequiredCredits.clear();
+        updateProgress();
+        btnCalculate.setDisable(true);
+    }
+
+    @FXML
+    private void onBack(ActionEvent e) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gpa/home.fxml"));
+        Parent root = loader.load();
+        Navigation.setRoot(e, root);
+    }
 }
