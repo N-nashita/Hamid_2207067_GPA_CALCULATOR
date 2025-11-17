@@ -5,7 +5,7 @@
   -fx-font-weight: bold;
   -fx-cursor: hand;
 
-  -fx-background-color: linear-gradient(to right, #8f5af0, #5aa7ff), #ffffff;
+  -fx-background-color: linear-gradient(to right, #7b3cf1, #3191fe), #ffffff;
   -fx-text-fill: #5aa7ff;
 }
 
@@ -25,12 +25,12 @@
 }
 
 .text-heading {
-  -fx-text-fill: linear-gradient(to right, #652fd9, #4c98fc);
+  -fx-text-fill: linear-gradient(to right, #5f25dd, #2982f7);
   -fx-font-weight: bold;
 }
 
 .app-background {
-  -fx-background-color: linear-gradient(to bottom right, #f6f8ff, #cdd7f1);
+  -fx-background-color: linear-gradient(to bottom right, #f6f8ff, #d9e2f8);
   -fx-background-insets: 0;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .gpa-table .column-header-background {
-  -fx-background-color: linear-gradient(to right, #7a49e6, #3f91ff);
+  -fx-background-color: linear-gradient(to right, #7c43f5, #4891f1);
   -fx-background-radius: 8 8 0 0;
   -fx-padding: 6 0;
 }
