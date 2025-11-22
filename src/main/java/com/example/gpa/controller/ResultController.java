@@ -93,4 +93,13 @@ public class ResultController {
         Parent root = loader.load();
         Navigation.setRoot(e, root);
     }
+
+    @FXML
+    private void onRecalculate(ActionEvent e) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gpa/course_entry.fxml"));
+        Parent root = loader.load();
+        CourseController cc = loader.getController();
+        cc.resetForRecalculate();
+        Navigation.setRoot(e, root);
+    }
 }
