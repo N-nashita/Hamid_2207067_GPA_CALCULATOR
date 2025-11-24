@@ -14,4 +14,11 @@ public class HomeController {
         Parent root = loader.load();
         Navigation.setRoot(event, root);
     }
+    
+    @FXML
+    public void onViewSaved(ActionEvent e) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gpa/saved_courses.fxml"));
+        Parent root = loader.load();
+        Navigation.setRoot(e, root);
+    }
 }

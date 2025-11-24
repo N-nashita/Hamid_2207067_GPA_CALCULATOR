@@ -13,6 +13,7 @@
         <VBox alignment="CENTER" spacing="16">
             <Label text="Hey, wanna calculate your gpa?" styleClass="text-heading" style="-fx-font-size: 28px; -fx-font-weight: bold;" />
             <Button text="Start GPA Calculator" onAction="#onStart" prefWidth="240" prefHeight="48" />
+            <Button text="View Saved Courses" onAction="#onViewSaved" prefWidth="240" prefHeight="42" />
         </VBox>
     </center>
 </BorderPane>

@@ -10,6 +10,11 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        // Ensure database file exists and drop deprecated gpa_totals table
+        try { 
+            com.example.gpa.db.Database.init();
+            com.example.gpa.db.Database.dropGpaTotals();
+        } catch (Exception ignored) {}
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gpa/home.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root, 1000, 650);

@@ -27,6 +27,7 @@
                 </columns>
             </TableView>
 
+
             <HBox alignment="CENTER" spacing="10">
                 <Button text="Recalculate" onAction="#onRecalculate" prefWidth="180" prefHeight="40" />
                 <Button text="Back to Home" onAction="#onBack" prefWidth="180" prefHeight="40" />

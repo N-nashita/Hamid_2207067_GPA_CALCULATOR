@@ -1,6 +1,7 @@
 package com.example.gpa.controller;
 
 import com.example.gpa.model.Course;
+import com.example.gpa.db.CourseRepository;
 import com.example.gpa.util.Navigation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -34,6 +35,21 @@ public class CourseController {
 
     private final ObservableList<Course> courses = FXCollections.observableArrayList();
     private Course editingCourse = null;
+    private String originalEditingCode = null;
+
+    private final CourseRepository repository = new CourseRepository();
+    private boolean dbInitialized = false;
+
+    private void ensureDb() {
+        if (!dbInitialized) {
+            try {
+                repository.init();
+                dbInitialized = true;
+            } catch (Exception ex) {
+                showAlert(Alert.AlertType.ERROR, "Database init failed: " + ex.getMessage());
+            }
+        }
+    }
 
     @FXML
     public void initialize() {
@@ -64,6 +80,9 @@ public class CourseController {
                 });
             }
         }
+
+        // Start empty every launch per updated requirement
+        updateProgress();
     }
 
     @FXML
@@ -113,6 +132,21 @@ public class CourseController {
         }
 
         if (editingCourse != null) {
+            String originalCode = originalEditingCode;
+            Course updated = new Course(name, code, credit, t1, t2, gradeValue);
+            ensureDb();
+            if (dbInitialized) {
+                try {
+                    boolean ok = repository.updateByOriginalCode(originalCode, updated);
+                    if (!ok) {
+                        showAlert(Alert.AlertType.ERROR, "Update failed in database.");
+                        return;
+                    }
+                } catch (Exception ex) {
+                    showAlert(Alert.AlertType.ERROR, "DB update error: " + ex.getMessage());
+                    return;
+                }
+            }
             editingCourse.setName(name);
             editingCourse.setCode(code);
             editingCourse.setCredit(credit);
@@ -122,9 +156,27 @@ public class CourseController {
             if (courseTable != null) courseTable.refresh();
             showAlert(Alert.AlertType.INFORMATION, "Course updated successfully!");
             editingCourse = null;
+            originalEditingCode = null;
             if (btnAddCourse != null) btnAddCourse.setText("Add Course");
         } else {
             Course c = new Course(name, code, credit, t1, t2, gradeValue);
+            ensureDb();
+            if (dbInitialized) {
+                try {
+                    boolean ok = repository.insert(c);
+                    if (!ok) {
+                        showAlert(Alert.AlertType.ERROR, "Insert failed in database.");
+                        return;
+                    }
+                } catch (Exception ex) {
+                    if (ex.getMessage() != null && ex.getMessage().toLowerCase().contains("unique")) {
+                        showAlert(Alert.AlertType.ERROR, "Course code already exists.");
+                    } else {
+                        showAlert(Alert.AlertType.ERROR, "DB insert error: " + ex.getMessage());
+                    }
+                    return;
+                }
+            }
             courses.add(c);
             showAlert(Alert.AlertType.INFORMATION, "Course added successfully!");
         }
@@ -221,6 +273,7 @@ public class CourseController {
             return;
         }
         editingCourse = selected;
+        originalEditingCode = selected.getCode();
         courseName.setText(selected.getName());
         courseCode.setText(selected.getCode());
         courseCredit.setText(String.valueOf(selected.getCredit()));
@@ -238,10 +291,25 @@ public class CourseController {
             showAlert(Alert.AlertType.WARNING, "Please select a course to delete.");
             return;
         }
+        ensureDb();
+        if (dbInitialized) {
+            try {
+                boolean ok = repository.deleteByCode(selected.getCode());
+                if (!ok) {
+                    showAlert(Alert.AlertType.ERROR, "Delete failed in database.");
+                    return;
+                }
+            } catch (Exception ex) {
+                showAlert(Alert.AlertType.ERROR, "DB delete error: " + ex.getMessage());
+                return;
+            }
+        }
         courses.remove(selected);
+        showAlert(Alert.AlertType.INFORMATION, "Course deleted.");
         if (courseTable != null) courseTable.getSelectionModel().clearSelection();
         if (editingCourse == selected) {
             editingCourse = null;
+            originalEditingCode = null;
             if (btnAddCourse != null) btnAddCourse.setText("Add Course");
             clearEntryFields();
         }

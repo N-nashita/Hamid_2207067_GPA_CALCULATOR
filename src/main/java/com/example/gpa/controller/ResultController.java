@@ -56,6 +56,7 @@ public class ResultController {
             double sum = courses.stream().mapToDouble(Course::getCredit).sum();
             lblTotalCredits.setText(String.format("Total Credits: %.1f", sum));
         }
+
     }
 
     private double calculateGPA(ObservableList<Course> list) {
@@ -102,4 +103,5 @@ public class ResultController {
         cc.resetForRecalculate();
         Navigation.setRoot(e, root);
     }
+
 }
